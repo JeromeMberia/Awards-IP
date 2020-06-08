@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load cloudinary %}
+{% block content %}
+{% if content %}
+<div class="bg-1">
+  <div class="container">
+    <div class="row text-center">
+      {% for con in content %}
+      <div class="col-sm-6 col-sm-4">
+        <div class="thumbnail">
+          <img src="{{con.homepage.url}}" width="400" height="300">
+          <p><strong>{{con.title}}</strong></p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="container-fluid bg-1 text-center" style="height: 100vh;">
+  <h3 class="margin">No title by that name in our database</h3>
+</div>
+{% endif %}
+{% endblock %}
