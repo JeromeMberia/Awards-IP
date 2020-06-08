@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load cloudinary %}
+{% block content %}
+<div class="bg-1">
+
+  {% if profile %}
+  {% for prof in profile %}
+  <div class="container-fluid bg-1 text-center">
+    <img src="{{prof.profile_pic.url}}" class="img-circle margin mt-5" style="display:inline" alt="Bird" width="200" height="200">
+    <h3 class="margin mt-0">{{prof.bio}}</h3>
+    <a href="{% url 'new_project' %}"class="btn btn-md btn-info">Add Project</a>
+  </div>
+  {% endfor %}
+  
+    <div class="container">
+      <div class="row text-center">
+        {% for proj in project%}
+        <div class="col-sm-4">
+          <div class="thumbnail">
+            <img src="{{proj.homepage.url}}" width="400" height="300">
+            <p><strong>Title:</strong>{{proj.title}}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  {% else %}
+  <div class="container-fluid bg-1 text-center">
+    <div class="col-md-2 col-sm-2 col-lg-2">
+      <a href="{% url 'new_profile' %}"class="btn btn-md btn-info margin">Add Profile</a>
+    </div>
+  </div>
+  {% endif %}
+  </div>
+</div>
+</div>
+{% endblock %}

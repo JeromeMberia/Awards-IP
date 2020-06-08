@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load cloudinary %}
+{% block content %}
+
+<div class="bg-1">
+  <div class="container">
+    <div class="row text-center">
+      {% for con in content %}
+      <div class="col-sm-12 col-xs-12 col-xl-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+          <a href="/project/{{con.title}}">
+            <img src="{{con.homepage.url}}" width="300" height="300">
+          </a>
+          <p><strong>Title:</strong> {{con.title}}</p>
+          <p><strong>Description:</strong> {{con.description}}</p>
+          <p><a href="{{con.link}}">Live Site</a></p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

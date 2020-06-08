@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load cloudinary %}
+{% block content %}
+<div class="container">
+  {% for proj in project %}
+  <div style="margin-left:5%;" class="column">
+    <div class=" col-lg-12">
+      <div class="thumbnail" style="text-align: center;">
+        <img src="{{proj.homepage.url}}" width="400" height="300">
+        <p><strong>Title:</strong>{{proj.title}}</p>
+        <p><strong>Description:</strong>{{proj.description}}</p>
+        
+          <a href="/rate/{{proj.id}}" class="btn btn-md btn-info">Rate Project</a>
+        
+      </div>
+    </div>
+    <h3 class="text-center">
+      <b>Rating and Reviews</b>
+    </h3>
+    <div style="overflow-x:auto; color: white;">
+      <table class="table table-hover">
+        <tr>
+          <th>Rater</th>
+          <th>Design</th>
+          <th>Content</th>
+          <th>Usability</th>
+          <th>Average</th>
+          <th>Review</th>
+        </tr>
+        {% for rate in proj.rates.all %}
+        <tr>
+          <td>{{rate.rater}}</td>
+          <td>{{rate.design}}</td>
+          <td>{{rate.content}}</td>
+          <td>{{rate.usability}}</td>
+          <td>{{rate.average}}</td>
+          <td>{{rate.review}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+
+  </div>
+  {% endfor%}
+</div>
+{% endblock %}
