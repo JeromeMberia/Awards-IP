@@ -77,3 +77,5 @@ class Profile(models.Model):
     def get_profile(cls,identity):
         profile = Profile.objects.filter(name__username__icontains = identity)
         return profile
+
+
